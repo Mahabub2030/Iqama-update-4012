@@ -1,0 +1,12 @@
+.header{
+    background-color: black;
+}
+
+.header,body{
+    background-color: rgb(9, 243, 114);
+    /* background-image: url(./mm.avif); */
+    
+}
+.card{
+    align-items: center;
+}
