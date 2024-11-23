@@ -21,20 +21,20 @@
 
 <body>
     <div
-        class="p-lg-6 border-warning-subtle m-10 content font-serif-mono bg-gradient-to-r from-cyan-200 to-blue-300 rounded-lg shadow-2xl text-black grid-cols-12 ">
+        class="p-lg-6 border-warning-subtle m-10 md:grid-cols-6 content font-serif-mono bg-gradient-to-r from-cyan-200 to-blue-300 rounded-lg shadow-2xl text-black grid-cols-12 ">
         <div class="row">
             <div class="w-full">
                 <div class="data_table">
                     <table id="example" class="table table-striped-columns table-hover">
                         <thead class="font-mono">
-                            <tr class=" font-mono col-span-2 ">
+                            <tr class=" font-mono lg:col-span-2 ">
                                 <th class="font-mono text-center text-xl">
                                     <h5>NAME</h5>
                                 </th>
                                 <th class="font-mono fw-bolder text-center text-xl">
                                     <h5>POSITION</h5>
                                 </th>
-                                <th class="font-mono text-center text-xl lg:columns-2">
+                                <th class="font-mono text-center text-xl lg:col-span-2">
                                     <h5 class="columns-1">DACO&Id</h5>
                                 </th>
                                 <th class=" fw-bolder text-center text-xl ">
@@ -118,7 +118,7 @@
                             </tr>
 
                             <tr data-id="5">
-                                <td>Moneer Abdulhadi  M Al Nasser</td>
+                                <td>Moneer Abdulhadi M Al Nasser</td>
                                 <td>Supervisor</td>
                                 <td>DMM-04-1029</td>
                                 <td contenteditable="true" class="Daco-valid text-center text-lg ">01-Jun-2024</td>
@@ -512,7 +512,7 @@
                                 <td class="countdown-iqama-expire text-center text-lg "></td>
                                 <td class="countdown-daco-expire text-center text-lg "></td>
                             </tr>
-                           
+
                             <tr data-id="37">
                                 <td>Delower Hossain</td>
                                 <td>Foreman</td>
@@ -3965,6 +3965,19 @@
                                 <td class="countdown-iqama-expire text-center text-lg "></td>
                                 <td class="countdown-daco-expire text-center text-lg "></td>
                             </tr>
+                            <tr data-id="10001">
+                                <td>ABDALLA SAMIR AHMED SAYED</td>
+                                <td>Asst.Accounting</td>
+                                <td>0</td>
+                                <td contenteditable="true" class="Daco-valid text-center text-lg ">01-Jun-2024</td>
+                                <td contenteditable="true" class="iqama-valid text-center text-lg ">10-Aug-2024</td>
+                                <!-- <td>07-Aug-2023</td> -->
+                                <td>414041</td>
+                                <td>2554504510</td>
+                                <td>Camp -Security</td>
+                                <td class="countdown-iqama-expire text-center text-lg "></td>
+                                <td class="countdown-daco-expire text-center text-lg "></td>
+                            </tr>
 
                             <!-- ends here all data -->
                         </tbody>
@@ -3985,8 +3998,6 @@
     <script src="./data table/js/vfs_fonts.js"></script>
     <script src="./data table/js/custom.js"></script>
     <script src="./index.js"></script>
-
-
 
     <script>
         $(document).ready(function () {
@@ -4009,7 +4020,6 @@
                         }
                     }
                 });
-
                 $(".countdown-iqama-expire").each(function () {
                     var iqamaValidText = $(this).closest("tr").find(".iqama-valid").text();
 
@@ -4110,7 +4120,9 @@
         });
 
     </script>
+
    
+
 
 
 </body>
