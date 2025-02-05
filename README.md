@@ -1,140 +1,61 @@
-# Employee Iqama and DACO Validity Management System
-<br/>
-# this projrect for our emplyee id valid checking ..
+# Employee Iqama Expiry Tracker
 
+This project is a web-based tool designed to manage and track employee Iqama and DACO expiry dates. It provides a user-friendly interface to input and edit employee data, automatically calculates the remaining days until expiry, and highlights expired documents.
 
+## Features
 
-Project Overview
+- **Editable Expiry Dates**: Update DACO and Iqama expiry dates directly in the table.
+- **Automatic Calculation**: Calculates the remaining days for both DACO and Iqama expiry dates.
+- **Date Validation**: Supports both Arabic (Hijri) and English (Gregorian) date formats.
+- **Dynamic Highlighting**: Expired documents are highlighted in red, and valid ones in green.
+- **Persistent Data**: Changes persist throughout the session.
 
-This project is a web-based application designed to manage and display employee information, specifically focusing on the validity of Iqama and DACO documents. It provides functionalities for viewing, editing, and calculating the remaining validity days of these documents. The project is built using HTML, CSS, JavaScript, jQuery, Tailwind CSS, Bootstrap, and DataTables.
+## Technologies Used
 
-Features
+- **HTML**: Markup structure for the web page.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **JavaScript**: For dynamic functionality and calculations.
+- **jQuery**: Simplifies DOM manipulation and event handling.
+- **Moment.js & Moment Hijri.js**: For date parsing and manipulation.
+- **Bootstrap**: Additional styling and responsive design.
+- **DataTables**: Enhances the table with features like sorting and pagination.
 
-Editable Table: Allows inline editing of DACO and Iqama validity dates.
+## Installation
 
-Automatic Date Calculation: Automatically calculates and displays the remaining days for DACO and Iqama validity.
+1. Clone the repository:
+    ```bash
+    git clone <repository-url>
+    ```
 
-Date Conversion: Supports both Gregorian and Hijri date formats, converting them to display remaining days correctly.
+2. Navigate to the project directory:
+    ```bash
+    cd employee-expiry-tracker
+    ```
 
-Responsive Design: Utilizes Tailwind CSS and Bootstrap for a responsive and modern user interface.
+3. Open `index.html` in your preferred browser.
 
-DataTables Integration: Enhances table functionalities such as searching, sorting, and pagination.
+## Usage
 
-Technologies Used
+1. Open the web page.
+2. Edit the DACO and Iqama expiry dates directly in the table.
+3. The table will automatically update to show the remaining days.
+4. Expired dates will be highlighted in red, while valid dates will appear in green.
 
-HTML5: Markup language for structuring the web page.
+## Example
 
-CSS3: For styling the application.
+| NAME                          | POSITION         | DACO-ID     | DACO-valid | IQAMA-Date | Iqama (Days) | DACO (Days) |
+|-------------------------------|------------------|-------------|------------|------------|--------------|-------------|
+| Shoeib Abou Zeid Mahmoud Awad | Operation Manager| DMM-02-7825 | 01-Jun-2024| 10-Aug-2024| 5            | -30         |
 
-Tailwind CSS: Utility-first CSS framework for designing responsive layouts.
+## Contributions
 
-Bootstrap 5: Provides additional responsive design and components.
+Contributions are welcome! Please fork the repository and submit a pull request.
 
-JavaScript: Core scripting language for dynamic functionalities.
+## License
 
-jQuery: Simplifies DOM manipulation and event handling.
+This project is licensed under the MIT License.
 
-DataTables: jQuery plugin for advanced interaction with HTML tables.
+## Contact
 
-Font Awesome: For using icons in the application.
-
-Installation and Setup
-
-Clone the repository:
-
-git clone <repository-url>
-
-Navigate to the project directory:
-
-cd <project-directory>
-
-Open the index.html file in your browser:You can open the file directly or use a local server for better performance.
-
-Usage
-
-View Employee Information:The table lists employees with their name, position, DACO ID, SAP ID, Iqama number, work location, and validity dates.
-
-Edit Validity Dates:Click on the DACO-valid or Iqama-Date cells to edit the dates directly in the table.
-
-Automatic Calculation:Once dates are updated, the system will automatically calculate and display the remaining days in the corresponding columns.
-
-Date Format Support:The application supports both Hijri and Gregorian dates. Hijri dates are converted to Gregorian for accurate calculations.
-
-Code Structure
-
-HTML (index.html): Defines the structure of the page, including the table layout and headers.
-
-CSS (style.css & Tailwind CSS classes): Handles the styling of the page.
-
-JavaScript (script.js): Contains the logic for date conversion and calculation of remaining days.
-
-Bootstrap and DataTables CSS/JS: Integrated for additional styling and functionality.
-
-Key Functionalities
-
-JavaScript Logic for Date Calculation:
-
-$(document).ready(function () {
-    function updateDaysRemaining() {
-        $(".countdown-daco-expire").each(function () {
-            var dacoValidText = $(this).closest("tr").find(".Daco-valid").text();
-            var dacoValidDate = new Date(dacoValidText);
-            if (isNaN(dacoValidDate.getTime())) {
-                $(this).text("N/A").addClass("text-danger").removeClass("text-success");
-            } else {
-                var currentDate = new Date();
-                var diffInMilliseconds = dacoValidDate.getTime() - currentDate.getTime();
-                var diffInDays = Math.ceil(diffInMilliseconds / (1000 * 3600 * 24));
-                $(this).text(diffInDays);
-                if (diffInDays <= 0) {
-                    $(this).addClass("text-danger").removeClass("text-success");
-                } else {
-                    $(this).addClass("text-success").removeClass("text-danger");
-                }
-            }
-        });
-
-        $(".countdown-iqama-expire").each(function () {
-            var iqamaValidText = $(this).closest("tr").find(".iqama-valid").text();
-
-            if (iqamaValidText.toLowerCase().includes('id')) {
-                $(this).text("N/A").addClass("text-success").removeClass("text-danger");
-            } else {
-                var iqamaValidDate = moment(iqamaValidText, 'iYYYY/iM/iD').isValid()
-                    ? moment(iqamaValidText, 'iYYYY/iM/iD').toDate()
-                    : new Date(iqamaValidText);
-
-                if (isNaN(iqamaValidDate.getTime())) {
-                    $(this).text("Saudi").addClass("text-danger").removeClass("text-success");
-                } else {
-                    var currentDate = new Date();
-                    var diffInMilliseconds = iqamaValidDate.getTime() - currentDate.getTime();
-                    var diffInDays = Math.ceil(diffInMilliseconds / (1000 * 3600 * 24));
-                    $(this).text(diffInDays);
-                    if (diffInDays <= 0) {
-                        $(this).addClass("text-danger").removeClass("text-success");
-                    } else {
-                        $(this).addClass("text-success").removeClass("text-danger");
-                    }
-                }
-            }
-        });
-    }
-
-    updateDaysRemaining();
-});
-
-Contributing
-
-Fork the repository.
-
-Create a new branch: git checkout -b feature-branch
-
-Make your changes and commit: git commit -m 'Add new feature'
-
-Push to the branch: git push origin feature-branch
-
-Create a Pull Request.
-
-License
+For any inquiries or support, please contact [your-email@example.com].
 
